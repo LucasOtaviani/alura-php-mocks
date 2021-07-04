@@ -4,14 +4,16 @@ namespace Alura\Leilao\Dao;
 
 use Alura\Leilao\Infra\ConnectionCreator;
 use Alura\Leilao\Model\Leilao as ModelLeilao;
+use PDO;
 
 class Leilao
 {
     private $con;
 
-    public function __construct()
+    public function __construct(PDO $pdo)
     {
-        $this->con = ConnectionCreator::getConnection();
+        $this->con = $pdo;
+        // ConnectionCreator::getConnection();
     }
 
     public function salva(ModelLeilao $leilao): void
